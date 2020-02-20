@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelegate{
 
     @IBOutlet var table: UITableView!
     
@@ -21,6 +21,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         // Do any additional setup after loading the view.
         
         table.dataSource = self
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,5 +60,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
     }
+    
+    
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class inputViewController: UIViewController {
+class inputViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var textField: UITextField!
     
@@ -19,6 +19,7 @@ class inputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        textField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +33,10 @@ class inputViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     /*
     // MARK: - Navigation
 
