@@ -52,7 +52,7 @@
         <!--Input View Controller-->
         <scene sceneID="UMm-WV-4hC">
             <objects>
-                <viewController id="osj-4j-8ao" customClass="inputViewController" customModule="kadaiProduct" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="next" id="osj-4j-8ao" customClass="inputViewController" customModule="kadaiProduct" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OWw-BS-tE0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

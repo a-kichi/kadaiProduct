@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelegate{
+class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelegate, UITableViewDelegate{
 
     @IBOutlet var table: UITableView!
     
@@ -21,6 +21,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
         // Do any additional setup after loading the view.
         
         table.dataSource = self
+        table.delegate = self
         
     }
     
@@ -29,6 +30,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
         
         if saveData.object(forKey: "text") != nil{
             textArray = saveData.object(forKey: "text") as! [String]
+            
         }
         
         table.reloadData()
@@ -58,9 +60,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
         saveData.set(textArray, forKey: "text")
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-    }
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath.row)が選択されました")
+        
+        let targetViewController = self.storyboard!.instantiateViewController(withIdentifier: "next")
+        self.present(targetViewController, animated: true, completion: nil)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+
+      }
 }
 
