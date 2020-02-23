@@ -16,6 +16,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
     
     var textArray:[String] = []
     
+    var recieveVable = Int()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -47,10 +49,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
         return cell!
     }
     
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
         return true
     }
 
+    //削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             textArray.remove(at: indexPath.row)
@@ -60,14 +64,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
         saveData.set(textArray, forKey: "text")
     }
     
+    //セルタップ時
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row)が選択されました")
-        
-        let targetViewController = self.storyboard!.instantiateViewController(withIdentifier: "next")
-        self.present(targetViewController, animated: true, completion: nil)
-        
+        //値わたし
+        recieveVable = indexPath.row
+        //画面遷移
+        performSegue(withIdentifier: "toNextViewController", sender: nil)
+        //セル選択を解除
         tableView.deselectRow(at: indexPath, animated: true)
-
       }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == "toNextViewController" {
+            let nextVC: inputViewController = (segue.destination as? inputViewController)!
+            nextVC.recieveVable = recieveVable
+            print("\(nextVC.recieveVable)です")
+        }else if segue.identifier == "input"{
+            let nextVC: inputViewController = (segue.destination as? inputViewController)!
+            nextVC.recieveVable = 9
+            print("プラスが押されました")
+        }
+    }
+
 }
 

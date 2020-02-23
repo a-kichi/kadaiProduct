@@ -16,11 +16,13 @@ class inputViewController: UIViewController, UITextFieldDelegate {
     
     var saveData: UserDefaults = UserDefaults.standard
 
+    var recieveVable = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         textField.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,10 +30,33 @@ class inputViewController: UIViewController, UITextFieldDelegate {
         textArray = saveData.object(forKey: "text")as! [String]
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+
+        
+        print("\(recieveVable)を取得")
+        
+        if recieveVable != 9 {
+            textArray = saveData.object(forKey: "text") as! [String]
+            textField.text = textArray[recieveVable]
+            //nilじゃない時＝タップした時
+        }
+        
+    }
+    
     @IBAction func save(){
-        textArray.append(textField.text!)
-        saveData.set(textArray, forKey: "text")
-        dismiss(animated: true, completion: nil)
+        
+        if recieveVable != 9{
+            //編集した時
+            textArray[recieveVable] = textField.text!
+            saveData.set(textArray, forKey: "text")
+            dismiss(animated: true, completion: nil)
+        }else{
+            //新規追加した時
+            textArray.append(textField.text!)
+            saveData.set(textArray, forKey: "text")
+            dismiss(animated: true, completion: nil)
+        }
+        
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

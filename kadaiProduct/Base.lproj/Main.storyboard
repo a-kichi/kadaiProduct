@@ -27,6 +27,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="osj-4j-8ao" kind="presentation" identifier="toNextViewController" id="pSB-SO-iKg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -37,7 +40,7 @@
                     <navigationItem key="navigationItem" id="A3a-u3-cd5">
                         <barButtonItem key="rightBarButtonItem" title="＋" id="yyX-qF-TsX">
                             <connections>
-                                <segue destination="osj-4j-8ao" kind="presentation" modalPresentationStyle="fullScreen" id="Nse-XU-AGK"/>
+                                <segue destination="osj-4j-8ao" kind="presentation" identifier="input" modalPresentationStyle="fullScreen" id="Nse-XU-AGK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -52,7 +55,7 @@
         <!--Input View Controller-->
         <scene sceneID="UMm-WV-4hC">
             <objects>
-                <viewController storyboardIdentifier="next" id="osj-4j-8ao" customClass="inputViewController" customModule="kadaiProduct" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toNext" id="osj-4j-8ao" customClass="inputViewController" customModule="kadaiProduct" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OWw-BS-tE0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,4 +106,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Nse-XU-AGK"/>
+    </inferredMetricsTieBreakers>
 </document>
