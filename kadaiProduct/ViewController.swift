@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
     
     var textArray:[String] = []
     
-    var recieveVable = Int()
+    var recieveVable :Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
         
         if saveData.object(forKey: "text") != nil{
             textArray = saveData.object(forKey: "text") as! [String]
-            
         }
         
         table.reloadData()
@@ -60,7 +59,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
             textArray.remove(at: indexPath.row)
             table.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
         }
-        
         saveData.set(textArray, forKey: "text")
     }
     
@@ -79,11 +77,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
         if segue.identifier == "toNextViewController" {
             let nextVC: inputViewController = (segue.destination as? inputViewController)!
             nextVC.recieveVable = recieveVable
-            print("\(nextVC.recieveVable)です")
-        }else if segue.identifier == "input"{
-            let nextVC: inputViewController = (segue.destination as? inputViewController)!
-            nextVC.recieveVable = 9
-            print("プラスが押されました")
         }
     }
 
